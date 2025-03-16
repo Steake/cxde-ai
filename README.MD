@@ -39,6 +39,7 @@ Follow these steps to set up CXDE.AI on your local machine.
 - [Python](https://www.python.org) (v3.8 or higher)
 - [pip](https://pip.pypa.io/en/stable/)
 - [uv](https://github.com/coleifer/uv)
+- [Solana CLI](https://docs.solana.com/cli/install-solana-cli)
 
 ### 1. Clone the Repository
 
