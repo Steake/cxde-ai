@@ -36,8 +36,9 @@ Follow these steps to set up CXDE.AI on your local machine.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) (v16 or higher)
-- [npm](https://www.npmjs.com/) (or [yarn](https://yarnpkg.com/))
+- [Python](https://www.python.org) (v3.8 or higher)
+- [pip](https://pip.pypa.io/en/stable/)
+- [uv](https://github.com/coleifer/uv)
 - [Solana CLI](https://docs.solana.com/cli/install-solana-cli)
 
 ### 1. Clone the Repository
@@ -50,13 +51,7 @@ cd slayer-ai
 ### 2. Install Dependencies
 
 ```bash
-npm install
-```
-
-or, if you prefer yarn:
-
-```bash
-yarn install
+pip install -r requirements.txt
 ```
 
 ### 3. Configure Environment Variables
@@ -75,7 +70,7 @@ CRYPTOHOPPER_SECRET=your_cryptohopper_secret
 To start CXDE.AI:
 
 ```bash
-npm start
+python main.py
 ```
 
 ### 5. Build for Production
@@ -83,7 +78,7 @@ npm start
 To generate a production-ready build:
 
 ```bash
-npm run build
+python setup.py build
 ```
 
 ---
@@ -97,7 +92,7 @@ CXDE.AI uses your Crypt0Hopper API key to fetch market data and execute trades. 
 Use the following command to start the application in development mode with live reloading:
 
 ```bash
-npm run dev
+python main.py --dev
 ```
 
 ### Key Features in Action
@@ -115,9 +110,9 @@ npm run dev
 │   ├── strategies       # Adaptive trading strategies
 │   ├── services         # Integration with Solana and Crypt0Hopper
 │   ├── utils            # Utility functions and helpers
-│   └── index.js         # Entry point of the application
+│   └── main.py          # Entry point of the application
 ├── .env                 # Environment variables
-├── package.json         # Node.js dependencies
+├── requirements.txt     # Python dependencies
 ├── README.md            # Documentation
 └── LICENSE              # Licensing information
 ```
@@ -126,9 +121,9 @@ npm run dev
 
 ## 🛠️ Tech Stack
 
-- **Node.js**: Backend runtime for fast, scalable applications.
-- **Web3.js**: Solana blockchain integration.
-- **Express.js**: Lightweight server framework.
+- **Python**: Backend runtime for fast, scalable applications.
+- **Web3.py**: Solana blockchain integration.
+- **Flask**: Lightweight server framework.
 - **Crypt0Hopper API**: Seamless trading operations.
 - **Solana CLI**: Blockchain interactions.
 
@@ -142,14 +137,13 @@ CXDE.AI utilizes Solana blockchain for:
 
 To interact with the Solana blockchain, CXDE.AI uses:
 
-```javascript
-const { Connection, clusterApiUrl } = require('@solana/web3.js');
-const connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
+```python
+from solana.rpc.api import Client
+solana_client = Client("https://api.mainnet-beta.solana.com")
 
-async function getBalance(publicKey) {
-    const balance = await connection.getBalance(publicKey);
-    console.log(`Balance: ${balance} lamports`);
-}
+def get_balance(public_key):
+    balance = solana_client.get_balance(public_key)
+    print(f"Balance: {balance['result']['value']} lamports")
 ```
 
 ---
