@@ -59,6 +59,8 @@ pip install -r requirements.txt
 Create a `.env` file in the root directory and add the following:
 
 ```env
+SOLANA_NETWORK=mainnet-beta
+PRIVATE_KEY=your_solana_private_key
 CRYPTOHOPPER_API_KEY=your_cryptohopper_api_key
 CRYPTOHOPPER_SECRET=your_cryptohopper_secret
 ```
